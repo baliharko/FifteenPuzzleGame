@@ -29,16 +29,23 @@ public class GameWindow extends JFrame {
 
         mainPanel.setLayout(new GridLayout(ROWS, COLUMNS));
 
+        this.updateGUI();
+
+        this.add(mainPanel);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+//     TODO
+//    this.buttons = GameLogic.move(this.buttons);
+
+    public void updateGUI() {
         for(int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++){
                 JButton button1 = buttons[i][j];
                 mainPanel.add(button1);
             }
         }
-
-        this.add(mainPanel);
-        this.setVisible(true);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args) {
