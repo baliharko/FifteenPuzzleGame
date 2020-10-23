@@ -17,6 +17,7 @@ import java.awt.*;
 public class GameWindow extends JFrame {
 
     private JPanel mainPanel = new JPanel();
+    private GridLayout layout = new GridLayout(ROWS, COLUMNS);
     private JButton[][] buttons;
 
     public GameWindow() {
@@ -24,10 +25,13 @@ public class GameWindow extends JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle(TITLE);
-
+        
         buttons = GameLogic.buttonGridFill(ROWS, COLUMNS);
 
-        mainPanel.setLayout(new GridLayout(ROWS, COLUMNS));
+        layout.setHgap(5);
+        layout.setVgap(5);
+        mainPanel.setLayout(layout);
+        mainPanel.setBackground(Color.gray);
 
         this.updateGUI();
 
