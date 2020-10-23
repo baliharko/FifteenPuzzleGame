@@ -11,6 +11,7 @@ import FifteenPuzzleGame.SwingGUI.GameWindow;
 
 public class Game {
 
+
     GameWindow gameWindow;
 
     public void init() {
