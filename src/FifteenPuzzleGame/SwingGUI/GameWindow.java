@@ -6,7 +6,6 @@ import static FifteenPuzzleGame.Constants.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Collection;
 
 /**
  * FifteenPuzzleGame <br>
@@ -35,12 +34,9 @@ public class GameWindow extends JFrame {
                 JButton button1 = buttons[i][j];
                 mainPanel.add(button1);
             }
-
         }
 
-
         this.add(mainPanel);
-
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }

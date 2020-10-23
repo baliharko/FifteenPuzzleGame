@@ -1,7 +1,6 @@
 package FifteenPuzzleGame.GameLogic;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -12,12 +11,11 @@ import java.util.Random;
  */
 public class GameLogic {
 
-
     public static JButton[][] buttonGridFill(int rows, int collums) {
         boolean[] isUsed = new boolean[16];
         JButton[][] out = new JButton[4][4];
         Random rand = new Random();
-        int num = 0;
+        int num;
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < collums; j++) {
@@ -40,7 +38,6 @@ public class GameLogic {
 
             }
         }
-
         return out;
         }
     }
