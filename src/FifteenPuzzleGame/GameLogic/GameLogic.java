@@ -12,21 +12,36 @@ import java.util.Random;
  */
 public class GameLogic {
 
-    ArrayList<JButton> buttonGrid = new ArrayList<>();
 
-    public void fillGrid() {
+    public static JButton[][] buttonGridFill(int rows, int collums) {
         boolean[] isUsed = new boolean[16];
-        Random rand;
+        JButton[][] out = new JButton[4][4];
+        Random rand = new Random();
+        int num = 0;
 
-        for (int i = 0; i < 16; i++) {
-            rand = new Random();
-            int num = rand.nextInt(16);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < collums; j++) {
 
-            while (isUsed[num])
                 num = rand.nextInt(16);
 
-            this.buttonGrid.add(new JButton("" + (num + 1)));
-            isUsed[num] = true;
+                while (isUsed[num]) {
+                    num = rand.nextInt(16);
+                }
+                isUsed[num] = true;
+
+                if (num +1 == 16) {
+                    JButton noButton = new JButton(" ");
+                    noButton.setVisible(false);
+                    out[i][j] = noButton;
+                    continue;
+                }
+
+                out[i][j] = new JButton("" + (num + 1));
+
+            }
+        }
+
+        return out;
         }
     }
-}
+
