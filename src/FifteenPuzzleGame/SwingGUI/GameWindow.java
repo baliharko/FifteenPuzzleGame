@@ -1,11 +1,11 @@
-package FifteenPuzzleGame;
+package FifteenPuzzleGame.SwingGUI;
 
 /**
  * FifteenPuzzleGame <br>
  * baliharko <br>
  * 2020-10-23 <br>
- * 11:47
+ * 12:20
  */
 
-public class Main {
+public class GameWindow {
 }
