@@ -31,22 +31,22 @@ public class GameLogic {
     }
 
     public static JButton[][] buttonGridFill(int rows, int columns) {
-        boolean[] isUsed = new boolean[ROWS * COLUMNS];
-        JButton[][] out = new JButton[ROWS][COLUMNS];
+        boolean[] isUsed = new boolean[rows * columns];
+        JButton[][] out = new JButton[rows][columns];
         Random rand = new Random();
         int num;
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
 
-                num = rand.nextInt(ROWS * COLUMNS);
+                num = rand.nextInt(rows * columns);
 
                 while (isUsed[num]) {
-                    num = rand.nextInt(ROWS * COLUMNS);
+                    num = rand.nextInt(rows * columns);
                 }
                 isUsed[num] = true;
 
-                if (num + 1 == ROWS * COLUMNS) {
+                if (num + 1 == rows * columns) {
                     JButton noButton = new JButton(EMPTY_BUTTON_TEXT);
                     noButton.setVisible(false);
                     out[i][j] = noButton;
