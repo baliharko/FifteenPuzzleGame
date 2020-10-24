@@ -3,8 +3,6 @@ package FifteenPuzzleGame.SwingGUI;
 import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.*;
 
-
-
 import javax.swing.*;
 import java.awt.*;
 
