@@ -19,9 +19,11 @@ public class Game {
 
     public void init() {
         gameWindow = new GameWindow();
+        this.addActionListenersToArray();
+    }
 
-        // Adding actionListeners to every button
-        // TODO call GameLogic.move(), then gameWindow.update()
+    // Adding actionListeners to every button in array
+    private void addActionListenersToArray() {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 int r = i;
@@ -29,6 +31,8 @@ public class Game {
                 gameWindow.getButtons()[i][j].addActionListener(l -> {
                     if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(r, c))) {
                         System.out.println("Movable!");
+                        // TODO call GameLogic.move()
+                        // TODO call gameWindow.update()
                     }
                 });
             }
