@@ -15,7 +15,7 @@ public class Coordinate {
     private int row;
     private int column;
 
-    // Surrounding coordinates
+    // Surrounding(neighbour) coordinates
     private Coordinate nNorth;
     private Coordinate nEast;
     private Coordinate nSouth;
@@ -25,6 +25,7 @@ public class Coordinate {
         this.row = row;
         this.column = column;
 
+        // creating neighbour Coordinates
         this.nNorth = new Coordinate(this.row - 1, this.column, true);
         this.nEast = new Coordinate(this.row, this.column + 1, true);
         this.nSouth = new Coordinate(this.row + 1, this.column, true);
