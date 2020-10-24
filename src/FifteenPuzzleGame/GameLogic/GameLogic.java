@@ -1,7 +1,5 @@
 package FifteenPuzzleGame.GameLogic;
 
-import FifteenPuzzleGame.Constants;
-
 import javax.swing.*;
 import java.util.Random;
 

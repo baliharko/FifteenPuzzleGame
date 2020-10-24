@@ -20,6 +20,8 @@ public class Game {
     public void init() {
         gameWindow = new GameWindow();
 
+        // Adding actionListeners to every button
+        // TODO call GameLogic.move(), then gameWindow.update()
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 int r = i;
