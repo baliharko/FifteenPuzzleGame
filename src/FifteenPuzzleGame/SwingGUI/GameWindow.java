@@ -16,11 +16,15 @@ import java.awt.*;
 
 public class GameWindow extends JFrame {
 
-    private JPanel mainPanel = new JPanel();
-    private GridLayout layout = new GridLayout(ROWS, COLUMNS);
+    private JPanel mainPanel;
+    private GridLayout layout;
     private JButton[][] buttons;
 
     public GameWindow() {
+
+        this.mainPanel = new JPanel();
+        this.layout = new GridLayout(ROWS, COLUMNS);
+
         this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
