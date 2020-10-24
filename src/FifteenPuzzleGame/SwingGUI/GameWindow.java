@@ -1,11 +1,15 @@
 package FifteenPuzzleGame.SwingGUI;
 
 import FifteenPuzzleGame.GameLogic.GameLogic;
+import FifteenPuzzleGame.*;
 
-import static FifteenPuzzleGame.Constants.*;
+
 
 import javax.swing.*;
 import java.awt.*;
+
+import static FifteenPuzzleGame.Constants.*;
+
 
 /**
  * FifteenPuzzleGame <br>
@@ -25,10 +29,10 @@ public class GameWindow extends JFrame {
         this.mainPanel = new JPanel();
         this.layout = new GridLayout(ROWS, COLUMNS);
 
-        this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        this.setSize(Constants.SCREEN_WIDTH, SCREEN_HEIGHT);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setTitle(TITLE);
+        this.setTitle(Constants.TITLE);
         
         buttons = GameLogic.buttonGridFill(ROWS, COLUMNS);
 
@@ -44,7 +48,11 @@ public class GameWindow extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-//     TODO
+    public JButton[][] getButtons() {
+        return buttons;
+    }
+
+    //     TODO
 //    this.buttons = GameLogic.move(this.buttons);
 
     public void updateGUI() {

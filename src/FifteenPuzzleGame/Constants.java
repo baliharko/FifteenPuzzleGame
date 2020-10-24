@@ -15,7 +15,5 @@ public class Constants {
     public static final int SCREEN_HEIGHT = 800;
 
     public static final String TITLE = "Fifteen Puzzle Game";
-
-
-
+    public static final String EMPTY_BUTTON_TEXT = "TOM_KNAPP";
 }
