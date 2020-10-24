@@ -6,11 +6,9 @@ import FifteenPuzzleGame.SwingGUI.GameWindow;
 
 import static FifteenPuzzleGame.Constants.*;
 
-
-
 /**
  * FifteenPuzzleGame <br>
- * Oscar Norman & baliharko <br>
+ * Created by Oscar Norman & Bali Harko <br>
  * 2020-10-23 <br>
  * 15:43
  */
@@ -21,7 +19,6 @@ public class Game {
 
     public void init() {
         gameWindow = new GameWindow();
-
 
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {

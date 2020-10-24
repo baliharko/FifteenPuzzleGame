@@ -2,7 +2,7 @@ package FifteenPuzzleGame;
 
 /**
  * FifteenPuzzleGame <br>
- * baliharko & Oscar Norman <br>
+ * Created by Oscar Norman & Bali Harko <br>
  * 2020-10-23 <br>
  * 13:36
  */

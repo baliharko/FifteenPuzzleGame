@@ -13,7 +13,7 @@ import static FifteenPuzzleGame.Constants.*;
 
 /**
  * FifteenPuzzleGame <br>
- * baliharko och Oscar Norman <br>
+ * Created by Oscar Norman & Bali Harko <br>
  * 2020-10-23 <br>
  * 12:20
  */
