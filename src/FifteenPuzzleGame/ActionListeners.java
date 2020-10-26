@@ -38,7 +38,9 @@ public class ActionListeners {
             gameWindow.updateGUI();
             addActionListenersToArray(gameWindow);
         });
+        
     }
+    
 
     public void newGame(GameWindow gameWindow) {
         gameWindow.setButtons(GameLogic.buttonGridFill());

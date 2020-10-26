@@ -21,6 +21,8 @@ public class GameWindow extends JFrame {
     private JPanel mainPanel; // Whole window
     private JPanel gamePanel; // Game window
     private JPanel menuPanel; // Menu window
+    private JPanel creditPanel; //Credits panel
+    private JLabel creators;
     private GridLayout gameLayout;
     private BorderLayout mainLayout;
     private JButton[][] buttons;
@@ -48,6 +50,9 @@ public class GameWindow extends JFrame {
         this.mainPanel = new JPanel();
         this.gamePanel = new JPanel();
         this.menuPanel = new JPanel();
+        this.creditPanel = new JPanel();
+        
+        this.creators = new JLabel("Made by Oscar Norman & Balasz Harko");
 
         this.mainLayout = new BorderLayout();
         this.gameLayout = new GridLayout(ROWS, COLUMNS);
@@ -68,8 +73,12 @@ public class GameWindow extends JFrame {
         menuPanel.add(reset);
         menuPanel.add(win);
         menuPanel.add(quit);
-
+        
+        creators.setFont(new Font("Serif", Font.BOLD, 20));
+        creditPanel.add(creators);
+        
         mainPanel.setLayout(mainLayout);
+        mainPanel.add(creditPanel, BorderLayout.NORTH);
         mainPanel.add(gamePanel, BorderLayout.CENTER);
         mainPanel.add(menuPanel, BorderLayout.SOUTH);
 
@@ -93,6 +102,7 @@ public class GameWindow extends JFrame {
         for(int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++){
                 JButton button1 = buttons[i][j];
+                
                 gamePanel.add(button1);
             }
         }
