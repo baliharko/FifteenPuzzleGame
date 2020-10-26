@@ -1,6 +1,7 @@
 package FifteenPuzzleGame.GameLogic;
 
 import javax.swing.*;
+import java.util.Arrays;
 import java.util.Random;
 
 import static FifteenPuzzleGame.Constants.*;
@@ -14,8 +15,15 @@ import static FifteenPuzzleGame.Constants.*;
 
 public class GameLogic {
     public static boolean checkWinCon(JButton[][] buttons) {
-        // TODO Gör denna
-        return false;
+        boolean isWin = true;
+
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                if (!buttons[i][j].getText().equalsIgnoreCase(createWinArray()[i][j].getText()))
+                    isWin = false;
+            }
+        }
+        return isWin;
     }
 
     public static JButton[][] createWinArray() {
@@ -86,5 +94,6 @@ public class GameLogic {
         return out;
     }
 }
+
 
 

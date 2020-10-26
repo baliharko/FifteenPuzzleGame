@@ -88,10 +88,6 @@ public class GameWindow extends JFrame {
         this.buttons = buttons;
     }
 
-    public JPanel getGamePanel() {
-        return gamePanel;
-    }
-
     public void updateGUI() {
         gamePanel.removeAll();
         for(int i = 0; i < ROWS; i++) {
@@ -104,4 +100,5 @@ public class GameWindow extends JFrame {
         gamePanel.repaint();
     }
 }
+
 

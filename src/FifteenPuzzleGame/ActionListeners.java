@@ -29,9 +29,7 @@ public class ActionListeners {
         gameWindow.getReset().addActionListener(l -> {
             if (JOptionPane.showConfirmDialog(null, "Are you sure?", "Reset?", JOptionPane.YES_NO_OPTION)
                     == JOptionPane.YES_OPTION) {
-                gameWindow.setButtons(GameLogic.buttonGridFill());
-                gameWindow.updateGUI();
-                addActionListenersToArray(gameWindow);
+                newGame(gameWindow);
             }
         });
 
@@ -40,6 +38,12 @@ public class ActionListeners {
             gameWindow.updateGUI();
             addActionListenersToArray(gameWindow);
         });
+    }
+
+    public void newGame(GameWindow gameWindow) {
+        gameWindow.setButtons(GameLogic.buttonGridFill());
+        gameWindow.updateGUI();
+        addActionListenersToArray(gameWindow);
     }
 
     // Adding actionListeners to every button in array
@@ -53,11 +57,17 @@ public class ActionListeners {
                         gameWindow.setButtons(
                                 GameLogic.move(gameWindow.getButtons(), new Coordinate(r, c)));
                         gameWindow.updateGUI();
+                        if (GameLogic.checkWinCon(gameWindow.getButtons()))
+                            if (JOptionPane.showConfirmDialog(null, "You won!!!\nPlay again?"
+                                    ,"Win!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                                newGame(gameWindow);
+                            } else
+                                System.exit(0);
                     }
                 });
             }
         }
     }
-
 }
+
 
