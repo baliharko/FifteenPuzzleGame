@@ -6,8 +6,7 @@ import FifteenPuzzleGame.SwingGUI.GameWindow;
 
 import javax.swing.*;
 
-import static FifteenPuzzleGame.Constants.COLUMNS;
-import static FifteenPuzzleGame.Constants.ROWS;
+import static FifteenPuzzleGame.Constants.*;
 
 /**
  * GameWindow.java <br>
@@ -17,8 +16,6 @@ import static FifteenPuzzleGame.Constants.ROWS;
  */
 
 public class ActionListeners {
-
-    GameWindow gameWindow;
 
     public ActionListeners(GameWindow gameWindow) {
         addActionListenersToArray(gameWindow);
@@ -32,8 +29,7 @@ public class ActionListeners {
         gameWindow.getReset().addActionListener(l -> {
             if (JOptionPane.showConfirmDialog(null, "Are you sure?", "Reset?", JOptionPane.YES_NO_OPTION)
                     == JOptionPane.YES_OPTION) {
-                gameWindow.setButtons(GameLogic.buttonGridFill(ROWS, COLUMNS));
-//                    gameWindow.updateGUI();
+                new Game();
             }
         });
     }

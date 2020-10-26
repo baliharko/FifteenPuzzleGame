@@ -18,13 +18,16 @@ public class Game {
     GameWindow gameWindow;
     ActionListeners listeners;
 
+    public Game() {
+        this.init();
+    }
+
     public void init() {
         gameWindow = new GameWindow();
         listeners = new ActionListeners(gameWindow);
     }
 
     public static void main(String[] args) {
-        Game game = new Game();
-        game.init();
+        new Game();
     }
 }
