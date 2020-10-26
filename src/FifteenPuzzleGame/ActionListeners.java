@@ -14,7 +14,6 @@ import static FifteenPuzzleGame.Constants.*;
  */
 
 public class ActionListeners {
-
     public ActionListeners(GameWindow gameWindow) {
         addActionListenersToArray(gameWindow);
 
