@@ -18,14 +18,25 @@ import static FifteenPuzzleGame.Constants.*;
 
 public class GameWindow extends JFrame {
 
-    private JPanel mainPanel;
-    private GridLayout layout;
+    private JPanel mainPanel; // Whole window
+    private JPanel gamePanel; // Game window
+    private JPanel menuPanel; // Menu window
+    private GridLayout gameLayout;
+    private BorderLayout mainLayout;
     private JButton[][] buttons;
+
+    private JButton reset = new JButton("Reset");
+    private JButton win = new JButton("Win!");
+    private JButton quit = new JButton("Quit");
 
     public GameWindow() {
 
         this.mainPanel = new JPanel();
-        this.layout = new GridLayout(ROWS, COLUMNS);
+        this.gamePanel = new JPanel();
+        this.menuPanel = new JPanel();
+
+        this.mainLayout = new BorderLayout();
+        this.gameLayout = new GridLayout(ROWS, COLUMNS);
 
         this.setSize(Constants.SCREEN_WIDTH, SCREEN_HEIGHT);
         this.setResizable(false);
@@ -34,10 +45,19 @@ public class GameWindow extends JFrame {
         
         buttons = GameLogic.buttonGridFill(ROWS, COLUMNS);
 
-        layout.setHgap(5);
-        layout.setVgap(5);
-        mainPanel.setLayout(layout);
-        mainPanel.setBackground(Color.gray);
+        gameLayout.setHgap(5);
+        gameLayout.setVgap(5);
+
+        gamePanel.setLayout(gameLayout);
+        gamePanel.setBackground(Color.gray);
+
+        menuPanel.add(reset);
+        menuPanel.add(win);
+        menuPanel.add(quit);
+
+        mainPanel.setLayout(mainLayout);
+        mainPanel.add(gamePanel, BorderLayout.CENTER);
+        mainPanel.add(menuPanel, BorderLayout.SOUTH);
 
         this.updateGUI();
 
@@ -57,7 +77,7 @@ public class GameWindow extends JFrame {
         for(int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++){
                 JButton button1 = buttons[i][j];
-                mainPanel.add(button1);
+                gamePanel.add(button1);
             }
         }
     }
