@@ -1,5 +1,7 @@
 package FifteenPuzzleGame.GameLogic;
 
+import javax.swing.*;
+
 import static FifteenPuzzleGame.Constants.*;
 
 /**
@@ -37,6 +39,17 @@ public class Coordinate {
         this.isNeighbor = isNeighbor;
         this.row = row < 0 ? 0 : Math.min(row, ROWS - 1);
         this.column = column < 0 ? 0 : Math.min(column, COLUMNS - 1);
+    }
+
+    public static Coordinate getEmptyButton(JButton[][] buttons) {
+        Coordinate emptyButton = null;
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                if (buttons[i][j].getText().equalsIgnoreCase(EMPTY_BUTTON_TEXT))
+                    emptyButton = new Coordinate(i, j);
+            }
+        }
+        return emptyButton;
     }
 
     public int getRow() {

@@ -25,9 +25,17 @@ public class GameLogic {
                 || buttons[position.getnWest().getRow()][position.getnWest().getColumn()].getText().equals(EMPTY_BUTTON_TEXT);
     }
 
-    public static JButton[][] move(JButton[][] buttons, Coordinate position) {
-        // TODO switch places with empty button if checkMovable == true
-        return null;
+    public static JButton[][] move(JButton[][] buttons, Coordinate clickedButton) {
+        Coordinate empty = Coordinate.getEmptyButton(buttons);
+        String buttonText = buttons[clickedButton.getRow()][clickedButton.getColumn()].getText();
+
+        buttons[clickedButton.getRow()][clickedButton.getColumn()].setText(EMPTY_BUTTON_TEXT);
+        buttons[clickedButton.getRow()][clickedButton.getColumn()].setVisible(false);
+
+        buttons[empty.getRow()][empty.getColumn()].setText(buttonText);
+        buttons[empty.getRow()][empty.getColumn()].setVisible(true);
+
+        return buttons;
     }
 
     public static JButton[][] buttonGridFill(int rows, int columns) {
@@ -56,6 +64,6 @@ public class GameLogic {
             }
         }
         return out;
-        }
     }
+}
 

@@ -30,9 +30,9 @@ public class Game {
                 int c = j;
                 gameWindow.getButtons()[i][j].addActionListener(l -> {
                     if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(r, c))) {
-                        System.out.println("Movable!");
-                        // TODO call GameLogic.move()
-                        // TODO call gameWindow.update()
+                        gameWindow.setButtons(
+                                GameLogic.move(gameWindow.getButtons(), new Coordinate(r, c)));
+                        gameWindow.updateGUI();
                     }
                 });
             }
