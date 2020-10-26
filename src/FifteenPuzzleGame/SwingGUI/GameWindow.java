@@ -70,6 +70,10 @@ public class GameWindow extends JFrame {
         return buttons;
     }
 
+    public void setButtons(JButton[][] buttons) {
+        this.buttons = buttons;
+    }
+
     //     TODO
 //    this.buttons = GameLogic.move(this.buttons);
 
@@ -80,5 +84,6 @@ public class GameWindow extends JFrame {
                 gamePanel.add(button1);
             }
         }
+        gamePanel.repaint();
     }
 }
