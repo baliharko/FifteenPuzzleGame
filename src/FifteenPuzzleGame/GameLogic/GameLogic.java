@@ -14,8 +14,28 @@ import static FifteenPuzzleGame.Constants.*;
 
 public class GameLogic {
     public static boolean checkWinCon(JButton[][] buttons) {
-        // TODO for loop check neighbor is +1
+        // TODO Gör denna
         return false;
+    }
+
+    public static JButton[][] createWinArray() {
+        JButton[][] out = new JButton[ROWS][COLUMNS];
+
+        int itr = 1;
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+
+                if (itr == 16) {
+                    JButton noButton = new JButton(EMPTY_BUTTON_TEXT);
+                    noButton.setVisible(false);
+                    out[i][j] = noButton;
+                    break;
+                }
+
+                out[i][j] = new JButton("" + itr++);
+            }
+        }
+        return out;
     }
 
     public static boolean checkMovable(JButton[][] buttons, Coordinate position) {
@@ -38,23 +58,23 @@ public class GameLogic {
         return buttons;
     }
 
-    public static JButton[][] buttonGridFill(int rows, int columns) {
-        boolean[] isUsed = new boolean[rows * columns];
-        JButton[][] out = new JButton[rows][columns];
+    public static JButton[][] buttonGridFill() {
+        boolean[] isUsed = new boolean[ROWS * COLUMNS];
+        JButton[][] out = new JButton[ROWS][COLUMNS];
         Random rand = new Random();
         int num;
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
 
-                num = rand.nextInt(rows * columns);
+                num = rand.nextInt(ROWS * COLUMNS);
 
                 while (isUsed[num]) {
-                    num = rand.nextInt(rows * columns);
+                    num = rand.nextInt(ROWS * COLUMNS);
                 }
                 isUsed[num] = true;
 
-                if (num + 1 == rows * columns) {
+                if (num + 1 == ROWS * COLUMNS) {
                     JButton noButton = new JButton(EMPTY_BUTTON_TEXT);
                     noButton.setVisible(false);
                     out[i][j] = noButton;
@@ -66,4 +86,5 @@ public class GameLogic {
         return out;
     }
 }
+
 

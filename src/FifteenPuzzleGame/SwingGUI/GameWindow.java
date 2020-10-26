@@ -27,6 +27,7 @@ public class GameWindow extends JFrame {
 
     private JButton reset = new JButton("Reset");
     private JButton win = new JButton("Win!");
+    private JButton quit = new JButton("Quit");
 
 
     public JButton getReset() {
@@ -41,7 +42,6 @@ public class GameWindow extends JFrame {
         return quit;
     }
 
-    private JButton quit = new JButton("Quit");
 
     public GameWindow() {
 
@@ -57,7 +57,7 @@ public class GameWindow extends JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle(Constants.TITLE);
 
-        buttons = GameLogic.buttonGridFill(ROWS, COLUMNS);
+        buttons = GameLogic.buttonGridFill();
 
         gameLayout.setHgap(5);
         gameLayout.setVgap(5);
@@ -93,12 +93,15 @@ public class GameWindow extends JFrame {
     }
 
     public void updateGUI() {
+        gamePanel.removeAll();
         for(int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++){
                 JButton button1 = buttons[i][j];
                 gamePanel.add(button1);
             }
         }
+        gamePanel.revalidate();
         gamePanel.repaint();
     }
 }
+

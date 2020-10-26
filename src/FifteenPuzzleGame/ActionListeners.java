@@ -22,15 +22,23 @@ public class ActionListeners {
 
         gameWindow.getQuit().addActionListener(l -> {
             if (JOptionPane.showConfirmDialog(null, "Are you sure?", "Quit?", JOptionPane.YES_NO_OPTION)
-             == JOptionPane.YES_OPTION)
+                    == JOptionPane.YES_OPTION)
                 System.exit(0);
         });
 
         gameWindow.getReset().addActionListener(l -> {
             if (JOptionPane.showConfirmDialog(null, "Are you sure?", "Reset?", JOptionPane.YES_NO_OPTION)
                     == JOptionPane.YES_OPTION) {
-                new Game();
+                gameWindow.setButtons(GameLogic.buttonGridFill());
+                gameWindow.updateGUI();
+                addActionListenersToArray(gameWindow);
             }
+        });
+
+        gameWindow.getWin().addActionListener(l -> {
+            gameWindow.setButtons(GameLogic.createWinArray());
+            gameWindow.updateGUI();
+            addActionListenersToArray(gameWindow);
         });
     }
 
@@ -52,3 +60,4 @@ public class ActionListeners {
     }
 
 }
+

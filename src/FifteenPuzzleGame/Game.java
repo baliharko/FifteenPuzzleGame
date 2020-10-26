@@ -1,10 +1,6 @@
 package FifteenPuzzleGame;
 
-import FifteenPuzzleGame.GameLogic.Coordinate;
-import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.SwingGUI.GameWindow;
-
-import static FifteenPuzzleGame.Constants.*;
 
 /**
  * FifteenPuzzleGame <br>
@@ -31,3 +27,4 @@ public class Game {
         new Game();
     }
 }
+
