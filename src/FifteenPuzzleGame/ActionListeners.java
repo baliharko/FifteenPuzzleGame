@@ -3,9 +3,7 @@ package FifteenPuzzleGame;
 import FifteenPuzzleGame.GameLogic.Coordinate;
 import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.SwingGUI.GameWindow;
-
 import javax.swing.*;
-
 import static FifteenPuzzleGame.Constants.*;
 
 /**
@@ -38,9 +36,7 @@ public class ActionListeners {
             gameWindow.updateGUI();
             addActionListenersToArray(gameWindow);
         });
-        
     }
-    
 
     public void newGame(GameWindow gameWindow) {
         gameWindow.setButtons(GameLogic.buttonGridFill());
@@ -54,6 +50,7 @@ public class ActionListeners {
             for (int j = 0; j < COLUMNS; j++) {
                 int r = i;
                 int c = j;
+
                 gameWindow.getButtons()[i][j].addActionListener(l -> {
                     if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(r, c))) {
                         gameWindow.setButtons(

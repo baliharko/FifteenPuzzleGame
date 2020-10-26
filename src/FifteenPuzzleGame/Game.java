@@ -13,6 +13,7 @@ public class Game {
 
     GameWindow gameWindow;
     ActionListeners listeners;
+    MouseAdapters mouseAdapters;
 
     public Game() {
         this.init();
@@ -21,6 +22,7 @@ public class Game {
     public void init() {
         gameWindow = new GameWindow();
         listeners = new ActionListeners(gameWindow);
+        mouseAdapters = new MouseAdapters(gameWindow);
     }
 
     public static void main(String[] args) {
