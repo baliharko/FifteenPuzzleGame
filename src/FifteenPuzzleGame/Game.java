@@ -16,27 +16,11 @@ import static FifteenPuzzleGame.Constants.*;
 public class Game {
 
     GameWindow gameWindow;
+    ActionListeners listeners;
 
     public void init() {
         gameWindow = new GameWindow();
-        this.addActionListenersToArray();
-    }
-
-    // Adding actionListeners to every button in array
-    private void addActionListenersToArray() {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; j++) {
-                int r = i;
-                int c = j;
-                gameWindow.getButtons()[i][j].addActionListener(l -> {
-                    if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(r, c))) {
-                        System.out.println("Movable!");
-                        // TODO call GameLogic.move()
-                        // TODO call gameWindow.update()
-                    }
-                });
-            }
-        }
+        listeners = new ActionListeners(gameWindow);
     }
 
     public static void main(String[] args) {

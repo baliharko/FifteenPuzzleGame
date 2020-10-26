@@ -27,6 +27,19 @@ public class GameWindow extends JFrame {
 
     private JButton reset = new JButton("Reset");
     private JButton win = new JButton("Win!");
+
+    public JButton getReset() {
+        return reset;
+    }
+
+    public JButton getWin() {
+        return win;
+    }
+
+    public JButton getQuit() {
+        return quit;
+    }
+
     private JButton quit = new JButton("Quit");
 
     public GameWindow() {
@@ -70,7 +83,10 @@ public class GameWindow extends JFrame {
         return buttons;
     }
 
-    //     TODO
+    public void setButtons(JButton[][] buttons) {
+        this.buttons = buttons;
+    }
+//     TODO
 //    this.buttons = GameLogic.move(this.buttons);
 
     public void updateGUI() {
