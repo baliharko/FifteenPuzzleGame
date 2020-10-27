@@ -52,7 +52,7 @@ public class GameWindow extends JFrame {
         this.menuPanel = new JPanel();
         this.creditPanel = new JPanel();
         
-        this.creators = new JLabel("Made by Oscar Norman & Balasz Harko");
+        this.creators = new JLabel("Made by Oscar Norman & Balazs Harko");
 
         this.mainLayout = new BorderLayout();
         this.gameLayout = new GridLayout(ROWS, COLUMNS);

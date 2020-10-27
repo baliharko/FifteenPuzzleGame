@@ -29,4 +29,3 @@ public class Game {
         new Game();
     }
 }
-

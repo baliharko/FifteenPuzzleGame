@@ -8,7 +8,7 @@ import static FifteenPuzzleGame.Constants.*;
 
 /**
  * GameWindow.java <br>
- * baliharko <br>
+ * Created by Oscar Norman & Bali Harko <br>
  * 2020-10-26 <br>
  * 14:15
  */
