@@ -27,9 +27,9 @@ public class GameWindow extends JFrame {
     private BorderLayout mainLayout;
     private JButton[][] buttons;
 
-    private JButton reset = new JButton("Reset");
-    private JButton win = new JButton("Win!");
-    private JButton quit = new JButton("Quit");
+    private JButton reset = new JButton(BUTTONTEXT_RESET);
+    private JButton win = new JButton(BUTTONTEXT_WIN);
+    private JButton quit = new JButton(BUTTONTEXT_QUIT);
 
 
     public JButton getReset() {
@@ -51,8 +51,8 @@ public class GameWindow extends JFrame {
         this.gamePanel = new JPanel();
         this.menuPanel = new JPanel();
         this.creditPanel = new JPanel();
-        
-        this.creators = new JLabel("Made by Oscar Norman & Balazs Harko");
+
+        this.creators = new JLabel(CREDITS);
 
         this.mainLayout = new BorderLayout();
         this.gameLayout = new GridLayout(ROWS, COLUMNS);
@@ -73,10 +73,10 @@ public class GameWindow extends JFrame {
         menuPanel.add(reset);
         menuPanel.add(win);
         menuPanel.add(quit);
-        
-        creators.setFont(new Font("Serif", Font.BOLD, 20));
+
+        creators.setFont(new Font(CREDITS_FONT, Font.BOLD, 20));
         creditPanel.add(creators);
-        
+
         mainPanel.setLayout(mainLayout);
         mainPanel.add(creditPanel, BorderLayout.NORTH);
         mainPanel.add(gamePanel, BorderLayout.CENTER);
@@ -102,7 +102,7 @@ public class GameWindow extends JFrame {
         for(int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++){
                 JButton button1 = buttons[i][j];
-                
+
                 gamePanel.add(button1);
             }
         }
@@ -110,5 +110,6 @@ public class GameWindow extends JFrame {
         gamePanel.repaint();
     }
 }
+
 
 
