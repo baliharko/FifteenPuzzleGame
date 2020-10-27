@@ -29,7 +29,7 @@ public class MouseAdapters {
                         @Override
                         public void mouseEntered(MouseEvent e) {
                             super.mouseEntered(e);
-                            gameWindow.getButtons()[finalI][finalJ].setBackground(Color.red);
+                            gameWindow.getButtons()[finalI][finalJ].setBackground(Color.cyan);
                         }
 
                         @Override

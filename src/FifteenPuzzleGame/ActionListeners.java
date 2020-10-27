@@ -14,6 +14,7 @@ import static FifteenPuzzleGame.Constants.*;
  */
 
 public class ActionListeners {
+
     public ActionListeners(GameWindow gameWindow) {
         addActionListenersToArray(gameWindow);
 
@@ -34,6 +35,8 @@ public class ActionListeners {
             gameWindow.setButtons(GameLogic.createWinArray());
             gameWindow.updateGUI();
             addActionListenersToArray(gameWindow);
+            new MouseAdapters(gameWindow);
+
         });
     }
 
@@ -41,6 +44,7 @@ public class ActionListeners {
         gameWindow.setButtons(GameLogic.buttonGridFill());
         gameWindow.updateGUI();
         addActionListenersToArray(gameWindow);
+        new MouseAdapters(gameWindow);
     }
 
     // Adding actionListeners to every button in array
