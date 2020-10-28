@@ -106,10 +106,18 @@ public class GameWindow extends JFrame {
                     button1.setBackground(Color.orange);
                     button1.setOpaque(true);
                 }
+                if (GameLogic.isCorrect(buttons, i, j) && !(i == ROWS -1 && j == COLUMNS -1)) {
+                    buttons[i][j].setBackground(Color.orange);
+                    buttons[i][j].setOpaque(true);
+                }
                 gamePanel.add(button1);
-
             }
         }
+
+        buttons[ROWS-1][COLUMNS-1].setBackground(new JButton().getBackground());
+        if (!buttons[ROWS-1][COLUMNS-1].getText().equalsIgnoreCase(EMPTY_BUTTON_TEXT))
+            buttons[ROWS-1][COLUMNS-1].setOpaque(false);
+
         gamePanel.revalidate();
         gamePanel.repaint();
     }

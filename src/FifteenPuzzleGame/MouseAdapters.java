@@ -38,12 +38,12 @@ public class MouseAdapters {
                     @Override
                     public void mouseExited(MouseEvent e) {
                         super.mouseExited(e);
-                        if (!GameLogic.isCorrect(gameWindow.getButtons(), r, c)){
-                            gameWindow.getButtons()[r][c].setBackground(new JButton().getBackground());
-                            gameWindow.getButtons()[r][c].setOpaque(false);
-                        } else {
+                        if (GameLogic.isCorrect(gameWindow.getButtons(), r, c)){
                             gameWindow.getButtons()[r][c].setBackground(Color.orange);
                             gameWindow.getButtons()[r][c].setOpaque(true);
+                        } else {
+                            gameWindow.getButtons()[r][c].setBackground(new JButton().getBackground());
+                            gameWindow.getButtons()[r][c].setOpaque(false);
                         }
                     }
                 });
