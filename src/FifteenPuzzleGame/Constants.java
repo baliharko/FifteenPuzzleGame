@@ -32,4 +32,5 @@ public class Constants {
     public static final String BUTTONTEXT_RESET = "Reset";
     public static final String BUTTONTEXT_WIN = "Win!";
     public static final String BUTTONTEXT_QUIT = "Quit";
+    public static final String BUTTONTEXT_SET_DIFFICULTY = "Set difficulty";
 }

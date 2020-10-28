@@ -22,17 +22,19 @@ public class GameWindow extends JFrame {
     private JPanel gamePanel; // Game window
     private JPanel menuPanel; // Menu window
     private JPanel creditPanel; //Credits panel
-    private JLabel creators;
+
+    private JLabel creators; // Credits
+
     private GridLayout gameLayout;
     private BorderLayout mainLayout;
-    private JButton[][] buttons;
 
+    private JButton[][] buttons; // The main array of buttons
+
+    // Menu-buttons
     private JButton reset = new JButton(BUTTONTEXT_RESET);
     private JButton win = new JButton(BUTTONTEXT_WIN);
     private JButton quit = new JButton(BUTTONTEXT_QUIT);
-    private JButton setDifficultyButton = new JButton("Set difficulty");
-
-    private Prompt prompt;
+    private JButton setDifficultyButton = new JButton(BUTTONTEXT_SET_DIFFICULTY);
 
     // Getting called first
     public GameWindow() {
@@ -51,7 +53,7 @@ public class GameWindow extends JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle(Constants.TITLE);
 
-        buttons = GameLogic.buttonGridFill();
+        buttons = GameLogic.buttonGridFill(); // Filling array with buttons
 
         gameLayout.setHgap(5);
         gameLayout.setVgap(5);
@@ -72,7 +74,7 @@ public class GameWindow extends JFrame {
         mainPanel.add(gamePanel, BorderLayout.CENTER);
         mainPanel.add(menuPanel, BorderLayout.SOUTH);
 
-        this.updateGUI();
+        this.updateGUI(); // Paints the buttons array to the GridLayout
 
         this.add(mainPanel);
         this.setVisible(true);
@@ -104,8 +106,6 @@ public class GameWindow extends JFrame {
         gamePanel.repaint();
     }
 
-    // Difficulty popup
-
     public JButton[][] getButtons() {
         return buttons;
     }
@@ -128,9 +128,5 @@ public class GameWindow extends JFrame {
 
     public JButton getSetDifficultyButton() {
         return setDifficultyButton;
-    }
-
-    public Prompt getPrompt() {
-        return prompt;
     }
 }

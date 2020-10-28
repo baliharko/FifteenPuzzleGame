@@ -11,6 +11,8 @@ import static FifteenPuzzleGame.Constants.*;
  */
 
 public abstract class GameLogic {
+
+    // Compares given array with winning array
     public static boolean checkWinCon(JButton[][] buttons) {
         boolean isWin = true;
 
@@ -63,11 +65,14 @@ public abstract class GameLogic {
         return buttons;
     }
 
+    // Checks if buttons is in its correct place
     public static boolean isCorrect(JButton[][] buttons, int r, int c) {
         JButton[][] ca = createWinArray();
         return buttons[r][c].getText().equals(ca[r][c].getText());
     }
 
+    // Reads from Constants class and creates a 2d array with buttons,
+    // and assigns each a random number
     public static JButton[][] buttonGridFill() {
         boolean[] isUsed = new boolean[ROWS * COLUMNS];
         JButton[][] out = new JButton[ROWS][COLUMNS];
