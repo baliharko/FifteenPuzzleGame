@@ -28,7 +28,6 @@ public class MouseAdapters {
                 gameWindow.getButtons()[i][j].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                        super.mouseEntered(e);
                         if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(r, c))) {
                             gameWindow.getButtons()[r][c].setBackground(Color.cyan);
                             gameWindow.getButtons()[r][c].setOpaque(true);
@@ -37,17 +36,12 @@ public class MouseAdapters {
 
                     @Override
                     public void mouseExited(MouseEvent e) {
-                        super.mouseExited(e);
-                        if (GameLogic.highlightCorrectMove(gameWindow.getButtons(), r, c)){
-                            gameWindow.getButtons()[r][c].setBackground(Color.orange);
-                            gameWindow.getButtons()[r][c].setOpaque(true);
-                        } else {
-                            gameWindow.getButtons()[r][c].setBackground(new JButton().getBackground());
-                            gameWindow.getButtons()[r][c].setOpaque(false);
-                        }
+                        gameWindow.getButtons()[r][c].setOpaque(
+                                GameLogic.highlightCorrectMove(gameWindow.getButtons(), r, c));
 
-
-
+                        gameWindow.getButtons()[r][c].setBackground(
+                                GameLogic.highlightCorrectMove(gameWindow.getButtons(), r, c) ? Color.orange
+                                : new JButton().getBackground());
                     }
                 });
             }
