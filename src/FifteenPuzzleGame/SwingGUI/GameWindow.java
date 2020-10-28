@@ -127,7 +127,6 @@ public class GameWindow extends JFrame {
         JPanel textPanel = new JPanel();
         JPanel buttonPanel = new JPanel();
 
-        mainFrame.setSize(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 7);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setResizable(false);
 
@@ -147,6 +146,8 @@ public class GameWindow extends JFrame {
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         mainFrame.add(mainPanel);
+        mainFrame.pack();
+        confirmButton.requestFocusInWindow();
         mainFrame.setVisible(true);
         mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
