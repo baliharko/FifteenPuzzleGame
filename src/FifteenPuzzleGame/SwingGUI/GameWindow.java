@@ -1,8 +1,6 @@
 package FifteenPuzzleGame.SwingGUI;
-
 import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
@@ -38,22 +36,6 @@ public class GameWindow extends JFrame {
     private JButton applyDifficultyButton;
     JTextField difficultyRowsInput;
     JTextField difficultyColumnsInput;
-
-    public JButton getReset() {
-        return reset;
-    }
-
-    public JButton getWin() {
-        return win;
-    }
-
-    public JButton getQuit() {
-        return quit;
-    }
-
-    public JButton getSetDifficultyButton() {
-        return setDifficultyButton;
-    }
 
     // Getting called first
     public GameWindow() {
@@ -98,14 +80,6 @@ public class GameWindow extends JFrame {
         this.add(mainPanel);
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-
-    public JButton[][] getButtons() {
-        return buttons;
-    }
-
-    public void setButtons(JButton[][] buttons) {
-        this.buttons = buttons;
     }
 
     public void updateGUI() {
@@ -223,5 +197,29 @@ public class GameWindow extends JFrame {
                 e.printStackTrace();
             }
         });
+    }
+
+    public JButton[][] getButtons() {
+        return buttons;
+    }
+
+    public void setButtons(JButton[][] buttons) {
+        this.buttons = buttons;
+    }
+
+    public JButton getReset() {
+        return reset;
+    }
+
+    public JButton getWin() {
+        return win;
+    }
+
+    public JButton getQuit() {
+        return quit;
+    }
+
+    public JButton getSetDifficultyButton() {
+        return setDifficultyButton;
     }
 }

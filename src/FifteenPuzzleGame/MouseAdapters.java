@@ -1,9 +1,7 @@
 package FifteenPuzzleGame;
-
 import FifteenPuzzleGame.GameLogic.Coordinate;
 import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.SwingGUI.GameWindow;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

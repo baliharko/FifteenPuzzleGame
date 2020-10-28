@@ -10,7 +10,6 @@ import FifteenPuzzleGame.SwingGUI.GameWindow;
  */
 
 public class Game {
-
     GameWindow gameWindow;
     ActionListeners listeners;
     MouseAdapters mouseAdapters;

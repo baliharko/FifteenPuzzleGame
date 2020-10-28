@@ -1,10 +1,6 @@
 package FifteenPuzzleGame.GameLogic;
-
 import javax.swing.*;
-import java.awt.*;
-import java.util.Arrays;
 import java.util.Random;
-
 import static FifteenPuzzleGame.Constants.*;
 
 /**
@@ -14,7 +10,7 @@ import static FifteenPuzzleGame.Constants.*;
  * Project: GameWindow.java <br>
  */
 
-public class GameLogic {
+public abstract class GameLogic {
     public static boolean checkWinCon(JButton[][] buttons) {
         boolean isWin = true;
 

@@ -1,13 +1,8 @@
 package FifteenPuzzleGame;
-
 import FifteenPuzzleGame.GameLogic.Coordinate;
 import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.SwingGUI.GameWindow;
-
 import javax.swing.*;
-
-import java.awt.*;
-
 import static FifteenPuzzleGame.Constants.*;
 
 /**
@@ -61,7 +56,6 @@ public class ActionListeners {
             for (int j = 0; j < COLUMNS; j++) {
                 int r = i;
                 int c = j;
-
                 gameWindow.getButtons()[i][j].addActionListener(l -> {
                     if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(r, c))) {
                         gameWindow.setButtons(GameLogic.move(gameWindow.getButtons(), new Coordinate(r, c)));

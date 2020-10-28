@@ -1,5 +1,4 @@
 package FifteenPuzzleGame;
-
 import java.awt.*;
 
 /**
@@ -10,7 +9,6 @@ import java.awt.*;
  */
 
 public class Constants {
-
     public static Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
     public static int ROWS = 4;
@@ -34,5 +32,4 @@ public class Constants {
     public static final String BUTTONTEXT_RESET = "Reset";
     public static final String BUTTONTEXT_WIN = "Win!";
     public static final String BUTTONTEXT_QUIT = "Quit";
-
 }
