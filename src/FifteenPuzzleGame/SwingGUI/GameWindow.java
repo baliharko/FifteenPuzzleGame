@@ -114,6 +114,3 @@ public class GameWindow extends JFrame {
         gamePanel.repaint();
     }
 }
-
-
-
