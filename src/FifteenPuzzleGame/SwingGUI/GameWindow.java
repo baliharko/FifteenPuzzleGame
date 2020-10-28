@@ -32,8 +32,12 @@ public class GameWindow extends JFrame {
     private JButton reset = new JButton(BUTTONTEXT_RESET);
     private JButton win = new JButton(BUTTONTEXT_WIN);
     private JButton quit = new JButton(BUTTONTEXT_QUIT);
-    private JButton difficulty = new JButton("Set difficulty");
+    private JButton setDifficultyButton = new JButton("Set difficulty");
 
+    // Prompt variables
+    private JButton applyDifficultyButton;
+    JTextField difficultyRowsInput;
+    JTextField difficultyColumnsInput;
 
     public JButton getReset() {
         return reset;
@@ -47,12 +51,12 @@ public class GameWindow extends JFrame {
         return quit;
     }
 
-    public JButton getDifficulty() {
-        return difficulty;
+    public JButton getSetDifficultyButton() {
+        return setDifficultyButton;
     }
 
+    // Getting called first
     public GameWindow() {
-
         this.mainPanel = new JPanel();
         this.gamePanel = new JPanel();
         this.menuPanel = new JPanel();
@@ -77,7 +81,7 @@ public class GameWindow extends JFrame {
         gamePanel.setBackground(Color.gray);
 
         menuPanel.add(reset);
-        menuPanel.add(difficulty);
+        menuPanel.add(setDifficultyButton);
         menuPanel.add(win);
         menuPanel.add(quit);
 
@@ -109,7 +113,6 @@ public class GameWindow extends JFrame {
         for(int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++){
                 JButton button1 = buttons[i][j];
-
                 gamePanel.add(button1);
             }
         }
@@ -117,12 +120,17 @@ public class GameWindow extends JFrame {
         gamePanel.repaint();
     }
 
+    // Difficulty popup
     public void showDifficultyPrompt() {
-        JFrame mainFrame = new JFrame();
+        JFrame mainFrame = new JFrame(); // Popup frame
         JPanel mainPanel = new JPanel();
-        JTextField rowsInput = new JTextField("Rows");
-        JTextField columnsInput = new JTextField("Columns");
-        JButton confirmButton = new JButton("Apply");
+
+        //TextFields -> textPanel
+        difficultyRowsInput = new JTextField("Rows");
+        difficultyColumnsInput = new JTextField("Columns");
+
+        this.applyDifficultyButton = new JButton("Apply"); // Button -> buttonPanel
+
         JPanel centerPanel = new JPanel();
         JPanel textPanel = new JPanel();
         JPanel buttonPanel = new JPanel();
@@ -133,13 +141,13 @@ public class GameWindow extends JFrame {
         mainPanel.setLayout(new BorderLayout());
         textPanel.setLayout(new GridLayout(2, 1));
 
-        rowsInput.setPreferredSize(new Dimension(100, 30));
-        columnsInput.setForeground(Color.gray);
-        rowsInput.setForeground(Color.gray);
+        difficultyRowsInput.setPreferredSize(new Dimension(100, 30));
+        difficultyColumnsInput.setForeground(Color.gray);
+        difficultyRowsInput.setForeground(Color.gray);
 
-        buttonPanel.add(confirmButton);
-        textPanel.add(rowsInput);
-        textPanel.add(columnsInput);
+        buttonPanel.add(applyDifficultyButton);
+        textPanel.add(difficultyRowsInput);
+        textPanel.add(difficultyColumnsInput);
 
         centerPanel.add(textPanel);
         mainPanel.add(centerPanel, BorderLayout.CENTER);
@@ -147,39 +155,60 @@ public class GameWindow extends JFrame {
 
         mainFrame.add(mainPanel);
         mainFrame.pack();
-        confirmButton.requestFocusInWindow();
+        applyDifficultyButton.requestFocusInWindow();
         mainFrame.setVisible(true);
         mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        rowsInput.addFocusListener(new FocusListener() {
+        difficultyRowsInput.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                rowsInput.setText("");
-                rowsInput.setForeground(Color.BLACK);
+                if (difficultyRowsInput.getText().equalsIgnoreCase("Rows")) {
+                    difficultyRowsInput.setText("");
+                }
+                    difficultyRowsInput.setForeground(Color.BLACK);
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                rowsInput.setForeground(Color.gray);
-                rowsInput.setText("Rows");
+                if (difficultyRowsInput.getText().equalsIgnoreCase("Rows")
+                        || difficultyRowsInput.getText().isBlank()) {
+                    difficultyRowsInput.setForeground(Color.gray);
+                    difficultyRowsInput.setText("Rows");
+                }
             }
         });
 
-        columnsInput.addFocusListener(new FocusListener() {
+        difficultyColumnsInput.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                columnsInput.setText("");
-                columnsInput.setForeground(Color.BLACK);
+
+                if (difficultyColumnsInput.getText().equalsIgnoreCase("Columns")) {
+                    difficultyColumnsInput.setText("");
+                }
+                    difficultyColumnsInput.setForeground(Color.BLACK);
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                columnsInput.setForeground(Color.gray);
-                columnsInput.setText("Columns");
+                if (difficultyColumnsInput.getText().equalsIgnoreCase("Columns")
+                        || difficultyColumnsInput.getText().isBlank()) {
+                    difficultyColumnsInput.setForeground(Color.gray);
+                    difficultyColumnsInput.setText("Columns");
+                }
+            }
+        });
+
+        applyDifficultyButton.addActionListener(l -> {
+            try {
+                Constants.setROWS(Integer.parseInt(this.difficultyRowsInput.getText()));
+                Constants.setCOLUMNS(Integer.parseInt(this.difficultyColumnsInput.getText()));
+                this.dispose();
+                mainFrame.dispose();
+                new Game();
+            } catch (Exception e) {
+                System.out.println("Only numbers please");
+                e.printStackTrace();
             }
         });
     }
 }
-
-
-

@@ -1,7 +1,6 @@
 package FifteenPuzzleGame.GameLogic;
 
 import javax.swing.*;
-import java.util.Arrays;
 import java.util.Random;
 
 import static FifteenPuzzleGame.Constants.*;
@@ -33,7 +32,7 @@ public class GameLogic {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
 
-                if (itr == 16) {
+                if (itr == ROWS * COLUMNS) {
                     JButton noButton = new JButton(EMPTY_BUTTON_TEXT);
                     noButton.setVisible(false);
                     out[i][j] = noButton;
@@ -94,6 +93,5 @@ public class GameLogic {
         return out;
     }
 }
-
 
 

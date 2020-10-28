@@ -31,15 +31,15 @@ public class ActionListeners {
             }
         });
 
+        gameWindow.getSetDifficultyButton().addActionListener(l -> {
+            gameWindow.showDifficultyPrompt();
+        });
+
         gameWindow.getWin().addActionListener(l -> {
             gameWindow.setButtons(GameLogic.createWinArray());
             gameWindow.updateGUI();
             addActionListenersToArray(gameWindow);
             new MouseAdapters(gameWindow);
-        });
-
-        gameWindow.getDifficulty().addActionListener(l -> {
-            gameWindow.showDifficultyPrompt();
         });
     }
 
