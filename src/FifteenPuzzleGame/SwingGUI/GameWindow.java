@@ -102,7 +102,7 @@ public class GameWindow extends JFrame {
         for(int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++){
                 JButton button1 = buttons[i][j];
-                if (GameLogic.highlightCorrectMove(this.buttons, i, j)) {
+                if (GameLogic.isCorrect(this.buttons, i, j)) {
                     button1.setBackground(Color.orange);
                     button1.setOpaque(true);
                 }

@@ -6,6 +6,8 @@ import FifteenPuzzleGame.SwingGUI.GameWindow;
 
 import javax.swing.*;
 
+import java.awt.*;
+
 import static FifteenPuzzleGame.Constants.*;
 
 /**
@@ -55,11 +57,17 @@ public class ActionListeners {
             for (int j = 0; j < COLUMNS; j++) {
                 int r = i;
                 int c = j;
-
                 gameWindow.getButtons()[i][j].addActionListener(l -> {
                     if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(r, c))) {
                         gameWindow.setButtons(
                                 GameLogic.move(gameWindow.getButtons(), new Coordinate(r, c)));
+                        if (GameLogic.isCorrect(gameWindow.getButtons(), r, c)
+                                && !(r == ROWS -1 && c == COLUMNS -1)){
+                            gameWindow.getButtons()[r][c].setBackground(Color.orange);
+                            gameWindow.getButtons()[r][c].setOpaque(true);
+                        } else if (r == ROWS -1 && c == COLUMNS -1){
+                            gameWindow.getButtons()[r][c].setBackground(new JButton().getBackground());
+                        }
                         gameWindow.updateGUI();
                         if (GameLogic.checkWinCon(gameWindow.getButtons()))
                             if (JOptionPane.showConfirmDialog(null, "You won!!!\nPlay again?"

@@ -67,15 +67,8 @@ public class GameLogic {
         return buttons;
     }
 
-    public static boolean highlightCorrectMove(JButton[][] buttons, int r, int c) {
+    public static boolean isCorrect(JButton[][] buttons, int r, int c) {
         JButton[][] ca = createWinArray();
-//        for (int i = 0; i < ROWS; i++){
-//            for (int j = 0; j < COLUMNS; j++) {
-//                if (buttons[r][c].getText().equals(ca[r][c].getText())){
-//                    return true;
-//                }
-//            }
-//        }
         return buttons[r][c].getText().equals(ca[r][c].getText());
     }
 
