@@ -36,7 +36,10 @@ public class ActionListeners {
             gameWindow.updateGUI();
             addActionListenersToArray(gameWindow);
             new MouseAdapters(gameWindow);
+        });
 
+        gameWindow.getDifficulty().addActionListener(l -> {
+            gameWindow.showDifficultyPrompt();
         });
     }
 
