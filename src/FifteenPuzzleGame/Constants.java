@@ -13,8 +13,17 @@ public class Constants {
 
     public static Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
-    public static final int ROWS = 4;
-    public static final int COLUMNS = 4;
+    public static int ROWS = 4;
+    public static int COLUMNS = 4;
+
+    public static void setROWS(int ROWS) {
+        Constants.ROWS = ROWS;
+    }
+
+    public static void setCOLUMNS(int COLUMNS) {
+        Constants.COLUMNS = COLUMNS;
+    }
+
     public static final int SCREEN_WIDTH = SCREEN_SIZE.width / 2;
     public static final int SCREEN_HEIGHT = SCREEN_WIDTH;
 
