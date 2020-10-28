@@ -23,23 +23,31 @@ public class MouseAdapters {
     public MouseAdapters(GameWindow gameWindow) {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                int finalI = i;
-                int finalJ = j;
+                int r = i;
+                int c = j;
                 gameWindow.getButtons()[i][j].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         super.mouseEntered(e);
-                        if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(finalI, finalJ))) {
-                            gameWindow.getButtons()[finalI][finalJ].setBackground(Color.cyan);
-                            gameWindow.getButtons()[finalI][finalJ].setOpaque(true);
+                        if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(r, c))) {
+                            gameWindow.getButtons()[r][c].setBackground(Color.cyan);
+                            gameWindow.getButtons()[r][c].setOpaque(true);
                         }
                     }
 
                     @Override
                     public void mouseExited(MouseEvent e) {
                         super.mouseExited(e);
-                        gameWindow.getButtons()[finalI][finalJ].setBackground(new JButton().getBackground());
-                        gameWindow.getButtons()[finalI][finalJ].setOpaque(false);
+                        if (GameLogic.highlightCorrectMove(gameWindow.getButtons(), r, c)){
+                            gameWindow.getButtons()[r][c].setBackground(Color.orange);
+                            gameWindow.getButtons()[r][c].setOpaque(true);
+                        } else {
+                            gameWindow.getButtons()[r][c].setBackground(new JButton().getBackground());
+                            gameWindow.getButtons()[r][c].setOpaque(false);
+                        }
+
+
+
                     }
                 });
             }

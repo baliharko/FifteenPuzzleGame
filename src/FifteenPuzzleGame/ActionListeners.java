@@ -3,7 +3,9 @@ package FifteenPuzzleGame;
 import FifteenPuzzleGame.GameLogic.Coordinate;
 import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.SwingGUI.GameWindow;
+
 import javax.swing.*;
+
 import static FifteenPuzzleGame.Constants.*;
 
 /**
@@ -61,7 +63,7 @@ public class ActionListeners {
                         gameWindow.updateGUI();
                         if (GameLogic.checkWinCon(gameWindow.getButtons()))
                             if (JOptionPane.showConfirmDialog(null, "You won!!!\nPlay again?"
-                                    ,"Win!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                                    , "Win!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                                 newGame(gameWindow);
                             } else
                                 System.exit(0);
