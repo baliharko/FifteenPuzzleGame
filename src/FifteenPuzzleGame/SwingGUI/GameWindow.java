@@ -1,4 +1,5 @@
 package FifteenPuzzleGame.SwingGUI;
+import FifteenPuzzleGame.GameLogic.Coordinate;
 import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.*;
 import javax.swing.*;
@@ -85,12 +86,15 @@ public class GameWindow extends JFrame {
         gamePanel.removeAll();
         for(int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++){
+
+                Coordinate position = new Coordinate(i, j);
+
                 JButton button1 = buttons[i][j];
-                if (GameLogic.isCorrect(this.buttons, i, j)) {
+                if (GameLogic.isCorrect(this.buttons, position)) {
                     button1.setBackground(Color.orange);
                     button1.setOpaque(true);
                 }
-                if (GameLogic.isCorrect(buttons, i, j) && !(i == ROWS -1 && j == COLUMNS -1)) {
+                if (GameLogic.isCorrect(buttons, position) && !(i == ROWS -1 && j == COLUMNS -1)) {
                     buttons[i][j].setBackground(Color.orange);
                     buttons[i][j].setOpaque(true);
                 }

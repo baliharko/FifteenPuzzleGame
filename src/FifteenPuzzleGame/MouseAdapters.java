@@ -21,13 +21,15 @@ public class MouseAdapters {
     public MouseAdapters(GameWindow gameWindow) {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                int r = i;
-                int c = j;
+
+                Coordinate position = new Coordinate(i, j);
+                int r = position.getRow();
+                int c = position.getColumn();
+
                 gameWindow.getButtons()[i][j].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                        super.mouseEntered(e);
-                        if (GameLogic.checkMovable(gameWindow.getButtons(), new Coordinate(r, c))) {
+                        if (GameLogic.checkMovable(gameWindow.getButtons(), position)) {
                             gameWindow.getButtons()[r][c].setBackground(Color.cyan);
                             gameWindow.getButtons()[r][c].setOpaque(true);
                         }
@@ -35,8 +37,7 @@ public class MouseAdapters {
 
                     @Override
                     public void mouseExited(MouseEvent e) {
-                        super.mouseExited(e);
-                        if (GameLogic.isCorrect(gameWindow.getButtons(), r, c)){
+                        if (GameLogic.isCorrect(gameWindow.getButtons(), position)){
                             gameWindow.getButtons()[r][c].setBackground(Color.orange);
                             gameWindow.getButtons()[r][c].setOpaque(true);
                         } else {

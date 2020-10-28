@@ -66,9 +66,11 @@ public abstract class GameLogic {
     }
 
     // Checks if buttons is in its correct place
-    public static boolean isCorrect(JButton[][] buttons, int r, int c) {
-        JButton[][] ca = createWinArray();
-        return buttons[r][c].getText().equals(ca[r][c].getText());
+    public static boolean isCorrect(JButton[][] buttons,Coordinate position) {
+        JButton[][] winArray = createWinArray();
+        int r = position.getRow();
+        int c = position.getColumn();
+        return buttons[r][c].getText().equals(winArray[r][c].getText());
     }
 
     // Reads from Constants class and creates a 2d array with buttons,
