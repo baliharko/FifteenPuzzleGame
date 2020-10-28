@@ -2,6 +2,8 @@ package FifteenPuzzleGame;
 import FifteenPuzzleGame.GameLogic.Coordinate;
 import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.SwingGUI.GameWindow;
+import FifteenPuzzleGame.SwingGUI.Prompt;
+
 import javax.swing.*;
 import static FifteenPuzzleGame.Constants.*;
 
@@ -31,7 +33,7 @@ public class ActionListeners {
         });
 
         gameWindow.getSetDifficultyButton().addActionListener(l -> {
-            gameWindow.showDifficultyPrompt();
+            new Prompt(gameWindow);
         });
 
         gameWindow.getWin().addActionListener(l -> {
