@@ -16,8 +16,7 @@ import java.awt.event.FocusListener;
  */
 public class Prompt extends JFrame {
     private JButton applyDifficultyButton;
-    private JTextField difficultyRowsInput;
-    private JTextField difficultyColumnsInput;
+    private JTextField gridResolutionInput;
 
     public Prompt(GameWindow gameWindow) {
 
@@ -25,8 +24,7 @@ public class Prompt extends JFrame {
             JPanel mainPanel = new JPanel();
 
             //TextFields -> textPanel
-            difficultyRowsInput = new JTextField("Rows");
-            difficultyColumnsInput = new JTextField("Columns");
+            gridResolutionInput = new JTextField("Enter grid-resolution");
 
             this.applyDifficultyButton = new JButton("Apply"); // Button -> buttonPanel
 
@@ -38,15 +36,13 @@ public class Prompt extends JFrame {
             mainFrame.setResizable(false);
 
             mainPanel.setLayout(new BorderLayout());
-            textPanel.setLayout(new GridLayout(2, 1));
+            textPanel.setLayout(new GridLayout(1, 1));
 
-            difficultyRowsInput.setPreferredSize(new Dimension(100, 30));
-            difficultyColumnsInput.setForeground(Color.gray);
-            difficultyRowsInput.setForeground(Color.gray);
+//            gridResolutionInput.setPreferredSize(new Dimension(150, 30));
+            gridResolutionInput.setForeground(Color.gray);
 
             buttonPanel.add(applyDifficultyButton);
-            textPanel.add(difficultyRowsInput);
-            textPanel.add(difficultyColumnsInput);
+            textPanel.add(gridResolutionInput);
 
             centerPanel.add(textPanel);
             mainPanel.add(centerPanel, BorderLayout.CENTER);
@@ -58,49 +54,29 @@ public class Prompt extends JFrame {
             mainFrame.setVisible(true);
             mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-            difficultyRowsInput.addFocusListener(new FocusListener() {
+            gridResolutionInput.addFocusListener(new FocusListener() {
                 @Override
                 public void focusGained(FocusEvent e) {
-                    if (difficultyRowsInput.getText().equalsIgnoreCase("Rows")) {
-                        difficultyRowsInput.setText("");
+                    if (gridResolutionInput.getText().equalsIgnoreCase("Enter grid-resolution")) {
+                        gridResolutionInput.setText("");
                     }
-                    difficultyRowsInput.setForeground(Color.BLACK);
+                    gridResolutionInput.setForeground(Color.BLACK);
                 }
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                    if (difficultyRowsInput.getText().equalsIgnoreCase("Rows")
-                            || difficultyRowsInput.getText().isBlank()) {
-                        difficultyRowsInput.setForeground(Color.gray);
-                        difficultyRowsInput.setText("Rows");
-                    }
-                }
-            });
-
-            difficultyColumnsInput.addFocusListener(new FocusListener() {
-                @Override
-                public void focusGained(FocusEvent e) {
-
-                    if (difficultyColumnsInput.getText().equalsIgnoreCase("Columns")) {
-                        difficultyColumnsInput.setText("");
-                    }
-                    difficultyColumnsInput.setForeground(Color.BLACK);
-                }
-
-                @Override
-                public void focusLost(FocusEvent e) {
-                    if (difficultyColumnsInput.getText().equalsIgnoreCase("Columns")
-                            || difficultyColumnsInput.getText().isBlank()) {
-                        difficultyColumnsInput.setForeground(Color.gray);
-                        difficultyColumnsInput.setText("Columns");
+                    if (gridResolutionInput.getText().equalsIgnoreCase("Enter grid-resolution")
+                            || gridResolutionInput.getText().isBlank()) {
+                        gridResolutionInput.setForeground(Color.gray);
+                        gridResolutionInput.setText("Enter grid-resolution");
                     }
                 }
             });
 
             applyDifficultyButton.addActionListener(l -> {
                 try {
-                    Constants.setROWS(Integer.parseInt(this.difficultyRowsInput.getText()));
-                    Constants.setCOLUMNS(Integer.parseInt(this.difficultyColumnsInput.getText()));
+                    Constants.setROWS(Integer.parseInt(this.gridResolutionInput.getText()));
+                    Constants.setCOLUMNS(Integer.parseInt(this.gridResolutionInput.getText()));
                     gameWindow.dispose();
                     mainFrame.dispose();
                     new Game();
