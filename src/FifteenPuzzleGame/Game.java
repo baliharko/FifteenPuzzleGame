@@ -1,6 +1,9 @@
 package FifteenPuzzleGame;
 
+import FifteenPuzzleGame.GameLogic.GameLogic;
 import FifteenPuzzleGame.SwingGUI.GameWindow;
+
+import java.util.Arrays;
 
 /**
  * FifteenPuzzleGame <br>
