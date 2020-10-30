@@ -43,25 +43,26 @@ public abstract class GameLogic {
 
     private static int getInversions(JButton[] buttons1d) {
         int inversions = 0;
-
-        int blankIndex = getBlank1dPosition(buttons1d);
-
         int firstButtonNum;
         int secondButtonNum;
 
         for (int i = 0; i < buttons1d.length - 1; i++) {
-            for (int j = i + 1; j < buttons1d.length; j++) {
-                firstButtonNum = (i == blankIndex) ? (ROWS*COLUMNS) : Integer.parseInt(buttons1d[i].getText());
-                if (i == buttons1d.length - 1)
-                    secondButtonNum = firstButtonNum;
-                else
-                    secondButtonNum = (j == blankIndex) ? (ROWS*COLUMNS) : (j == buttons1d.length - 1) ? firstButtonNum
-                            : Integer.parseInt(buttons1d[j].getText());
 
-                if (firstButtonNum > secondButtonNum)
-                    inversions++;
+            if (buttons1d[i].getText().equalsIgnoreCase(EMPTY_BUTTON_TEXT))
+                continue;
+
+                for (int j = i + 1; j < buttons1d.length; j++) {
+                    firstButtonNum = buttons1d[i].getText()
+                            .equalsIgnoreCase(EMPTY_BUTTON_TEXT) ? (ROWS * COLUMNS) : Integer.parseInt(buttons1d[i].getText());
+                    secondButtonNum = buttons1d[j].getText()
+                            .equalsIgnoreCase(EMPTY_BUTTON_TEXT) ? (ROWS * COLUMNS) : Integer.parseInt(buttons1d[j].getText());
+
+                    if (firstButtonNum > secondButtonNum) {
+                        inversions++;
+                    }
+                }
             }
-        }
+
         return inversions;
     }
 
@@ -75,15 +76,6 @@ public abstract class GameLogic {
                 row++;
         }
         return row;
-    }
-
-    private static int getBlank1dPosition(JButton[] buttons1d) {
-        for (int i = 0; i < buttons1d.length; i++) {
-            if (buttons1d[i].getText().equalsIgnoreCase(EMPTY_BUTTON_TEXT)) {
-                return i;
-            }
-        }
-        return - 1; // if error
     }
 
     // Compares given array with winning array
