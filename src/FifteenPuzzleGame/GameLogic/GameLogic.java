@@ -17,15 +17,6 @@ public abstract class GameLogic {
     public static boolean isSolvable(JButton[][] buttons) {
         JButton[] buttons1d = flattenArray(buttons);
 
-        System.out.println("------------------------------------------------------------");
-        System.out.println("Rows % 2 = " + (ROWS % 2 == 0));
-        System.out.println("blank button row = " + getBlankButtonRow(buttons1d));
-        System.out.println("inversions = " + getInversions(buttons1d));
-        System.out.println();
-        System.out.println("blank button row % 2 = " + (getBlankButtonRow(buttons1d) % 2 == 0));
-        System.out.println("inversions % 2 = " + (getInversions(buttons1d) % 2 == 0));
-        System.out.println("------------------------------------------------------------");
-
         if (!isEven(ROWS))
             return isEven(getInversions(buttons1d));
         else {
@@ -47,12 +38,6 @@ public abstract class GameLogic {
                 out[row + j] = buttons[i][j];
             }
         }
-
-        System.out.print("flattened array = [");
-        for (JButton b : out) {
-            System.out.print(b.getText() + ", ");
-        }
-        System.out.println("]");
         return out;
     }
 
@@ -172,12 +157,6 @@ public abstract class GameLogic {
 
         while (true) {
 
-            System.out.println();
-            System.out.println("=============================");
-            System.out.println("Start filling grid...");
-            System.out.println("=============================");
-            System.out.println();
-
             out = new JButton[ROWS][COLUMNS];
             isUsed = new boolean[ROWS * COLUMNS];
             rand = new Random();
@@ -201,11 +180,6 @@ public abstract class GameLogic {
                     out[i][j] = new JButton("" + (num + 1));
                 }
             }
-            System.out.println();
-            System.out.println("================================================");
-            System.out.println("isSolvable @ end of fill = " + isSolvable(out));
-            System.out.println("================================================");
-            System.out.println();
             if (isSolvable(out))
                 break;
         }
