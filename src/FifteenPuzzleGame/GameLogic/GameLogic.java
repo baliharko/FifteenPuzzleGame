@@ -58,25 +58,26 @@ public abstract class GameLogic {
 
     private static int getInversions(JButton[] buttons1d) {
         int inversions = 0;
-
-        int blankIndex = getBlank1dPosition(buttons1d);
-
         int firstButtonNum;
         int secondButtonNum;
 
         for (int i = 0; i < buttons1d.length - 1; i++) {
-            for (int j = i + 1; j < buttons1d.length; j++) {
-                firstButtonNum = (i == blankIndex) ? (ROWS*COLUMNS) : Integer.parseInt(buttons1d[i].getText());
-                if (i == buttons1d.length - 1)
-                    secondButtonNum = firstButtonNum;
-                else
-                    secondButtonNum = (j == blankIndex) ? (ROWS*COLUMNS) : (j == buttons1d.length - 1) ? firstButtonNum
-                            : Integer.parseInt(buttons1d[j].getText());
 
-                if (firstButtonNum > secondButtonNum)
-                    inversions++;
+            if (buttons1d[i].getText().equalsIgnoreCase(EMPTY_BUTTON_TEXT))
+                continue;
+
+                for (int j = i + 1; j < buttons1d.length; j++) {
+                    firstButtonNum = buttons1d[i].getText()
+                            .equalsIgnoreCase(EMPTY_BUTTON_TEXT) ? (ROWS * COLUMNS) : Integer.parseInt(buttons1d[i].getText());
+                    secondButtonNum = buttons1d[j].getText()
+                            .equalsIgnoreCase(EMPTY_BUTTON_TEXT) ? (ROWS * COLUMNS) : Integer.parseInt(buttons1d[j].getText());
+
+                    if (firstButtonNum > secondButtonNum) {
+                        inversions++;
+                    }
+                }
             }
-        }
+
         return inversions;
     }
 
@@ -90,15 +91,6 @@ public abstract class GameLogic {
                 row++;
         }
         return row;
-    }
-
-    private static int getBlank1dPosition(JButton[] buttons1d) {
-        for (int i = 0; i < buttons1d.length; i++) {
-            if (buttons1d[i].getText().equalsIgnoreCase(EMPTY_BUTTON_TEXT)) {
-                return i;
-            }
-        }
-        return - 1; // if error
     }
 
     // Compares given array with winning array
@@ -165,51 +157,122 @@ public abstract class GameLogic {
     // Reads from Constants class and creates a 2d array with buttons,
     // and assigns each a random number
     public static JButton[][] buttonGridFill() {
+
+        JButton[][] test1 = new JButton[ROWS][COLUMNS];
+
+        test1[0][0] = new JButton("" + 13);
+        test1[0][1] = new JButton("" + 2);
+        test1[0][2] = new JButton("" + 10);
+        test1[0][3] = new JButton("" + 3);
+
+        test1[1][0] = new JButton("" + 1);
+        test1[1][1] = new JButton("" + 12);
+        test1[1][2] = new JButton("" + 8);
+        test1[1][3] = new JButton("" + 4);
+
+        test1[2][0] = new JButton("" + 5);
+        test1[2][1] = new JButton(EMPTY_BUTTON_TEXT);
+        test1[2][2] = new JButton("" + 9);
+        test1[2][3] = new JButton("" + 6);
+
+        test1[3][0] = new JButton("" + 15);
+        test1[3][1] = new JButton("" + 14);
+        test1[3][2] = new JButton("" + 11);
+        test1[3][3] = new JButton("" + 7);
+
+        JButton[][] test2 = new JButton[ROWS][COLUMNS];
+
+        test2[0][0] = new JButton("" + 6);
+        test2[0][1] = new JButton("" + 13);
+        test2[0][2] = new JButton("" + 7);
+        test2[0][3] = new JButton("" + 10);
+
+        test2[1][0] = new JButton("" + 8);
+        test2[1][1] = new JButton("" + 9);
+        test2[1][2] = new JButton("" + 11);
+        test2[1][3] = new JButton(EMPTY_BUTTON_TEXT);
+
+        test2[2][0] = new JButton("" + 15);
+        test2[2][1] = new JButton("" + 2);
+        test2[2][2] = new JButton("" + 12);
+        test2[2][3] = new JButton("" + 5);
+
+        test2[3][0] = new JButton("" + 14);
+        test2[3][1] = new JButton("" + 3);
+        test2[3][2] = new JButton("" + 1);
+        test2[3][3] = new JButton("" + 4);
+
+
+        JButton[][] test3 = new JButton[ROWS][COLUMNS];
+
+        test3[0][0] = new JButton("" + 3);
+        test3[0][1] = new JButton("" + 9);
+        test3[0][2] = new JButton("" + 1);
+        test3[0][3] = new JButton("" + 15);
+
+        test3[1][0] = new JButton("" + 14);
+        test3[1][1] = new JButton("" + 11);
+        test3[1][2] = new JButton("" + 4);
+        test3[1][3] = new JButton("" + 6);
+
+        test3[2][0] = new JButton("" + 13);
+        test3[2][1] = new JButton(EMPTY_BUTTON_TEXT);
+        test3[2][2] = new JButton("" + 10);
+        test3[2][3] = new JButton("" + 12);
+
+        test3[3][0] = new JButton("" + 2);
+        test3[3][1] = new JButton("" + 7);
+        test3[3][2] = new JButton("" + 8);
+        test3[3][3] = new JButton("" + 5);
+
+
         boolean[] isUsed;
         JButton[][] out;
         Random rand;
         int num;
 
-        while (true) {
-
-            System.out.println();
-            System.out.println("=============================");
-            System.out.println("Start filling grid...");
-            System.out.println("=============================");
-            System.out.println();
-
-            out = new JButton[ROWS][COLUMNS];
-            isUsed = new boolean[ROWS * COLUMNS];
-            rand = new Random();
-
-            for (int i = 0; i < ROWS; i++) {
-                for (int j = 0; j < COLUMNS; j++) {
-
-                    num = rand.nextInt(ROWS * COLUMNS);
-
-                    while (isUsed[num]) {
-                        num = rand.nextInt(ROWS * COLUMNS);
-                    }
-                    isUsed[num] = true;
-
-                    if (num + 1 == ROWS * COLUMNS) {
-                        JButton noButton = new JButton(EMPTY_BUTTON_TEXT);
-                        noButton.setVisible(false);
-                        out[i][j] = noButton;
-                        continue;
-                    }
-                    out[i][j] = new JButton("" + (num + 1));
-                }
-            }
-            System.out.println();
-            System.out.println("================================================");
-            System.out.println("isSolvable @ end of fill = " + isSolvable(out));
-            System.out.println("================================================");
-            System.out.println();
-            if (isSolvable(out))
-                break;
-        }
-        return out;
+//        while (true) {
+//
+//            System.out.println();
+//            System.out.println("=============================");
+//            System.out.println("Start filling grid...");
+//            System.out.println("=============================");
+//            System.out.println();
+//
+//            out = new JButton[ROWS][COLUMNS];
+//            isUsed = new boolean[ROWS * COLUMNS];
+//            rand = new Random();
+//
+//            for (int i = 0; i < ROWS; i++) {
+//                for (int j = 0; j < COLUMNS; j++) {
+//
+//                    num = rand.nextInt(ROWS * COLUMNS);
+//
+//                    while (isUsed[num]) {
+//                        num = rand.nextInt(ROWS * COLUMNS);
+//                    }
+//                    isUsed[num] = true;
+//
+//                    if (num + 1 == ROWS * COLUMNS) {
+//                        JButton noButton = new JButton(EMPTY_BUTTON_TEXT);
+//                        noButton.setVisible(false);
+//                        out[i][j] = noButton;
+//                        continue;
+//                    }
+//                    out[i][j] = new JButton("" + (num + 1));
+//                }
+//            }
+//            System.out.println();
+//            System.out.println("================================================");
+//            System.out.println("isSolvable @ end of fill = " + isSolvable(out));
+//            System.out.println("================================================");
+//            System.out.println();
+//            if (isSolvable(out))
+//                break;
+//        }
+//        return out;
+        System.out.println(isSolvable(test3));
+        return test3;
     }
 }
 
