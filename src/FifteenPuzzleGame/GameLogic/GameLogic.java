@@ -29,7 +29,7 @@ public abstract class GameLogic {
         return num % 2 == 0;
     }
 
-    private static JButton[] flattenArray(JButton[][] buttons) {
+    public static JButton[] flattenArray(JButton[][] buttons) {
         JButton[] out = new JButton[ROWS * COLUMNS];
         int row;
         for (int i = 0; i < ROWS; i++) {
@@ -41,7 +41,7 @@ public abstract class GameLogic {
         return out;
     }
 
-    private static int getInversions(JButton[] buttons1d) {
+    public static int getInversions(JButton[] buttons1d) {
         int inversions = 0;
         int firstButtonNum;
         int secondButtonNum;
@@ -66,7 +66,7 @@ public abstract class GameLogic {
         return inversions;
     }
 
-    private static int getBlankButtonRow(JButton[] buttons1d) {
+    public static int getBlankButtonRow(JButton[] buttons1d) {
         int row = 1;
         for (int i = buttons1d.length - 1; i >= 0; i--) {
             if (buttons1d[i].getText().equalsIgnoreCase(EMPTY_BUTTON_TEXT))
